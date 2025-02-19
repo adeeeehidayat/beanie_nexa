@@ -18,18 +18,30 @@ class CartController extends Controller
         $user = Auth::user();
         $product = Product::findOrFail($productId);
 
+        // Cek apakah stok mencukupi
+        if ($product->stock <= 0) {
+            return response()->json(['error' => 'Stok produk habis!'], 400);
+        }
+
         $cartItem = Cart::where('user_id', $user->id)
                         ->where('product_id', $productId)
                         ->first();
 
         if ($cartItem) {
-            $cartItem->increment('quantity');
+            // Jika stok cukup, tambah jumlah di keranjang dan kurangi stok
+            if ($product->stock >= 1) {
+                $cartItem->increment('quantity');
+                $product->decrement('stock', 1);
+            } else {
+                return response()->json(['error' => 'Stok tidak mencukupi!'], 400);
+            }
         } else {
             Cart::create([
                 'user_id' => $user->id,
                 'product_id' => $productId,
                 'quantity' => 1,
             ]);
+            $product->decrement('stock', 1);
         }
 
         return response()->json(['success' => 'Produk berhasil ditambahkan ke keranjang.']);
@@ -53,9 +65,16 @@ class CartController extends Controller
             return redirect()->back()->with('error', 'Anda tidak memiliki akses untuk menghapus item ini.');
         }
 
+        // Kembalikan stok produk yang dihapus dari keranjang
+        $product = Product::find($cartItem->product_id);
+        if ($product) {
+            $product->increment('stock', $cartItem->quantity);
+        }
+
+        // Hapus item dari keranjang
         $cartItem->delete();
 
-        return redirect()->back()->with('success', 'Produk berhasil dihapus dari keranjang.');
+        return redirect()->back()->with('success', 'Produk berhasil dihapus dari keranjang dan stok dikembalikan.');
     }
 }
 

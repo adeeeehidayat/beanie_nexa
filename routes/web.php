@@ -23,3 +23,15 @@ use App\Http\Controllers\CartController;
 Route::post('/cart/add/{id}', [CartController::class, 'addToCart'])->name('cart.add');
 Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.view');
 Route::get('/cart/remove/{id}', [CartController::class, 'removeFromCart'])->name('cart.remove');
+
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ArticleController;
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('dashboard');
+
+    Route::resource('admin/products', ProductController::class);
+    Route::resource('articles', ArticleController::class);
+});

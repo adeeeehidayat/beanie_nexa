@@ -342,7 +342,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     let successModal = new bootstrap.Modal(document.getElementById('successModal'));
                     successModal.show();
                 } else {
-                    alert("Gagal menambahkan ke keranjang!");
+                    alert("Stok produk habis!");
                 }
             })
             .catch(error => console.error("Error:", error));

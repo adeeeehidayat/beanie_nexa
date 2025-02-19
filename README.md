@@ -61,6 +61,7 @@ Akses aplikasi di browser: `http://127.0.0.1:8000`
 Contoh akun user
 - username : budi123
 - password : password123
+---
 Contoh akun admin
 - username : dian_purnama
 - password : password123

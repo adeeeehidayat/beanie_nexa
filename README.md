@@ -1,13 +1,18 @@
 # Beanie 
 
 Proyek ini adalah aplikasi web berbasis Laravel untuk e-commerce kopi.
+# Fitur Database di Pengguna
 - Login/Register
-- Tambah Produk ke keranjang
+- Tambah Produk ke keranjang dan mengurangi stok produk
+- Jika stok produk habis maka muncul peringatan produk habis saat menambahkan produk ke keranjang
+- Jika menghapus produk dari keranjang akan mengembalikan jumlah stok
 - Produk dan Artikel dinamis dari database (termasuk data carousel yang dinamis)
-- Pastikan untuk terhubung dengan internet karena asset gambar diambil dari unsplash dan placehold.co
+# Fitur Database di Admin
+- CRUD Produk dan Artikel
 
 ## Instalasi
 Berikut adalah langkah-langkah untuk menjalankan proyek ini di lingkungan lokal untuk tim reviewer NEXA.
+- Pastikan untuk terhubung dengan internet karena asset gambar diambil dari unsplash dan placehold.co
 ### 1. Clone Repository
 ```sh
 git clone https://github.com/adeeeehidayat/beanie_nexa.git

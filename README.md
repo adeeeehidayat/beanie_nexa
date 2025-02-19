@@ -5,9 +5,9 @@ Proyek ini adalah aplikasi web berbasis Laravel untuk e-commerce kopi.
 - Tambah Produk ke keranjang
 - Produk dan Artikel dinamis dari database (termasuk data carousel yang dinamis)
 - Pastikan untuk terhubung dengan internet karena asset gambar diambil dari unsplash dan placehold.co
-Berikut adalah langkah-langkah untuk menjalankan proyek ini di lingkungan lokal untuk tim reviewer NEXA.
 
 ## Instalasi
+Berikut adalah langkah-langkah untuk menjalankan proyek ini di lingkungan lokal untuk tim reviewer NEXA.
 ### 1. Clone Repository
 ```sh
 git clone https://github.com/adeeeehidayat/beanie_nexa.git
